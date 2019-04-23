@@ -1,3 +1,4 @@
+#from PIL import Image, ImageTk
 from tkinter import *
 
 
@@ -55,6 +56,7 @@ def main():
     canvas = Canvas(window, background="#4fa4ef")
     canvas.pack(fill=BOTH, expand=1)
 
+    # Top Buttons (images)
 
     gif1 = PhotoImage(file='buttonL.gif')
     canvas.create_image((width / 2) - 150, 0, image=gif1, anchor=NE)
@@ -65,8 +67,26 @@ def main():
     gif3 = PhotoImage(file='buttonR.gif')
     canvas.create_image((width / 2) + 150, 0, image=gif3, anchor=NW)
 
+    # Bottom image
+
     gif4 = PhotoImage(file='bottom_rectangle.gif')
+#    pil_image4 = Image.open(gif4)
+#    width_og, height_og = pil_image4.size
+#    factor = 1.5
+#    heighti = int(height_og * factor)
+#    pil_image42 = pil_image4.resize((width, heighti), Image.ANTIALIAS)
     canvas.create_image((width / 2), height, image=gif4, anchor=S)
+
+    rect1 = PhotoImage(file='Rect1.gif')
+    canvas.create_image((width / 3), (height / 3), image=rect1, anchor=N)
+
+    rect2 = PhotoImage(file='rounded_rectangle.gif')
+    canvas.create_image(((2 * width) / 3), (height / 3), image=rect2, anchor=N)
+
+    rect3 = PhotoImage(file='rounded_rectangle.gif')
+    canvas.create_image((width / 2), (height / 2), image=rect3, anchor=N)
+
+    # Speed Button Labels
 
     labelL = Label(window, text="Low", background=bgColor, font=("Helvetica, 30"))
     labelL.pack()
