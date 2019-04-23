@@ -55,11 +55,18 @@ def main():
     canvas = Canvas(window, background="#4fa4ef")
     canvas.pack(fill=BOTH, expand=1)
 
+
     gif1 = PhotoImage(file='buttonL.gif')
-    canvas.create_image(width / 3, 100, image=gif1, anchor=CENTER)
+    canvas.create_image((width / 2) - 150, 0, image=gif1, anchor=NE)
 
     gif2 = PhotoImage(file='buttonM.gif')
-    canvas.create_image((2 * width / 3) - (width / 6) + 60, 100, image=gif2, anchor=CENTER)
+    canvas.create_image((width / 2), 0, image=gif2, anchor=N)
+
+    gif3 = PhotoImage(file='buttonR.gif')
+    canvas.create_image((width / 2) + 150, 0, image=gif3, anchor=NW)
+
+    gif4 = PhotoImage(file='bottom_rectangle.gif')
+    canvas.create_image((width / 2), height, image=gif4, anchor=S)
 
     labelL = Label(window, text="Low", background=bgColor, font=("Helvetica, 30"))
     labelL.pack()
