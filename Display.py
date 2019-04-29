@@ -80,10 +80,10 @@ def main():
     rect1 = PhotoImage(file='Rect1.gif')
     canvas.create_image((width / 3), (height / 3), image=rect1, anchor=N)
 
-    rect2 = PhotoImage(file='rounded_rectangle.gif')
+    rect2 = PhotoImage(file='Rect3.gif')
     canvas.create_image(((2 * width) / 3), (height / 3), image=rect2, anchor=N)
 
-    rect3 = PhotoImage(file='rounded_rectangle.gif')
+    rect3 = PhotoImage(file='Rect2.gif')
     canvas.create_image((width / 2), (height / 2), image=rect3, anchor=N)
 
     # Speed Button Labels
