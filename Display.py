@@ -1,7 +1,8 @@
 #from PIL import Image, ImageTk
 from tkinter import *
-
-
+import time
+import os
+import threading
 
 class Display(Frame):
 
@@ -80,10 +81,10 @@ def main():
     rect1 = PhotoImage(file='Rect1.gif')
     canvas.create_image((width / 3), (height / 3), image=rect1, anchor=N)
 
-    rect2 = PhotoImage(file='rounded_rectangle.gif')
+    rect2 = PhotoImage(file='Rect3.gif')
     canvas.create_image(((2 * width) / 3), (height / 3), image=rect2, anchor=N)
 
-    rect3 = PhotoImage(file='rounded_rectangle.gif')
+    rect3 = PhotoImage(file='Rect2.gif')
     canvas.create_image((width / 2), (height / 2), image=rect3, anchor=N)
 
     # Speed Button Labels
@@ -103,12 +104,29 @@ def main():
     labelH.place(x=(4 * width / 5 + labelH.winfo_width()), y=((6 * height) / 7 + labelH.winfo_height()))
 
 
-    #dis = Display()
+    t1 = threading.Thread(target=time_count, args=(window, bgColor, width, height))
+    t1.start()
 
+    # dis = Display()
     window.mainloop()
 
-
+def time_count(window, bgColor, width, height):
+    sec = int(0)
+    min = int(0)
+    hrs = int(0)
+    while(1):
+        if sec > 59:
+            sec = 0
+            min = min + 1
+        if min > 59:
+            min = 0
+            hrs = hrs + 1
+        sec = sec + 1
+        timeStr = "{:02d}:{:02d}:{:02d}".format(hrs, min, sec)
+        labelTime = Label(window, text=timeStr, background=bgColor, font=("Helvetica, 30"))
+        labelTime.pack()
+        labelTime.place(x=(4 * width / 5 + labelTime.winfo_width()), y=((6 * height) / 7 + labelTime.winfo_height()))
+        time.sleep(1)
 
 if __name__ == '__main__':
-
     main()
