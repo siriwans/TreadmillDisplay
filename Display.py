@@ -123,9 +123,9 @@ def time_count(window, bgColor, width, height):
             hrs = hrs + 1
         sec = sec + 1
         timeStr = "{:02d}:{:02d}:{:02d}".format(hrs, min, sec)
-        labelTime = Label(window, text=timeStr, background=bgColor, font=("Helvetica, 30"))
+        labelTime = Label(window, text=timeStr, background="#0b5394", font=("Helvetica, 20"), fg ="#ffffff")
         labelTime.pack()
-        labelTime.place(x=(4 * width / 5 + labelTime.winfo_width()), y=((6 * height) / 7 + labelTime.winfo_height()))
+        labelTime.place(x=(3.9 * width / 6 + labelTime.winfo_width()), y=((2.7 * height) / 7 + labelTime.winfo_height()))
         time.sleep(1)
 
 if __name__ == '__main__':
