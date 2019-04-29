@@ -1,4 +1,5 @@
-#from PIL import Image, ImageTk
+import PIL.Image
+import PIL.ImageTk
 from tkinter import *
 
 
@@ -69,13 +70,14 @@ def main():
 
     # Bottom image
 
-    gif4 = PhotoImage(file='bottom_rectangle.gif')
-#    pil_image4 = Image.open(gif4)
-#    width_og, height_og = pil_image4.size
-#    factor = 1.5
-#    heighti = int(height_og * factor)
-#    pil_image42 = pil_image4.resize((width, heighti), Image.ANTIALIAS)
-    canvas.create_image((width / 2), height, image=gif4, anchor=S)
+#    gif4 = PhotoImage(file='bottom_rectangle.gif')
+    pil_image4 = PIL.Image.open("bottom_rectangle.gif")
+    width_og, height_og = pil_image4.size
+    factor = 1.5
+    heighti = int(height_og * factor)
+    pil_image42 = pil_image4.resize((width, heighti), PIL.Image.ANTIALIAS)
+    tk_image = PIL.ImageTk.PhotoImage(pil_image42)
+    canvas.create_image((width / 2), height, image=tk_image, anchor=S)
 
     rect1 = PhotoImage(file='Rect1.gif')
     canvas.create_image((width / 3), (height / 3), image=rect1, anchor=N)
