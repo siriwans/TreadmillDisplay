@@ -132,6 +132,8 @@ def main():
     pauseButton = Button(width=widthi, height=heighti,bd=0, highlightthickness=0,bg="#0b5394",relief=FLAT,image=rect2,activebackground="#0b5394",
                          activeforeground="#0b5394",highlightcolor="#4fa4ef",command=setPause)
 
+    #pauseButton = Button(width=widthi, height=heighti,bd=1, highlightthickness=0,bg="#4fa4ef",relief=FLAT,image=rect2,activebackground="#0b5394",
+                         #activeforeground="#0b5394",highlightcolor="#4fa4ef")#command=lambda:time_count(window, bgColor, width, height))
     pauseButton.pack()
     pauseButton.place(x=(width / 2.35), y=(height / 2))
 
