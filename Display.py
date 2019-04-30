@@ -130,9 +130,11 @@ def main():
     #canvas.create_image((width / 2), (height / 2), image=rect2, anchor=N)
 
     pauseButton = Button(width=widthi, height=heighti,bd=0, highlightthickness=0,bg="#0b5394",relief=FLAT,image=rect2,activebackground="#0b5394",
-                         activeforeground="#0b5394",highlightcolor="#4fa4ef")#command=lambda:time_count(window, bgColor, width, height))
+                         activeforeground="#0b5394",highlightcolor="#4fa4ef",command=setPause)
+
     pauseButton.pack()
     pauseButton.place(x=(width / 2.35), y=(height / 2))
+
 
     # Speed Button Labels
 
@@ -155,8 +157,15 @@ def main():
     # dis = Display()
     window.mainloop()
 
+pause = FALSE
 
+def setPause():
+    global pause
+    pause = True
 
+def setStart():
+    global pause
+    pause = False
 
 #def checkPauseTime(pause):
 #     while (pause == True):
@@ -166,21 +175,26 @@ def time_count(window, width, height):
     sec = int(0)
     min = int(0)
     hrs = int(0)
+    global pause;
 
     while(1):
-        if sec > 59:
-            sec = 0
-            min = min + 1
-        if min > 59:
-            min = 0
-            hrs = hrs + 1
-        sec = sec + 1
-        timeStr = "{:02d}:{:02d}:{:02d}".format(hrs, min, sec)
-        labelTime = Label(window, text=timeStr, background="#0b5394", font=("Helvetica, 20"), fg="#ffffff")
-        labelTime.pack()
-        labelTime.place(x=(3.9 * width / 6 + labelTime.winfo_width()),
-                        y=((2.7 * height) / 7 + labelTime.winfo_height()))
-        time.sleep(1)
+        if (pause):
+            time.sleep(1)
+            continue
+        else:
+            if sec > 59:
+                sec = 0
+                min = min + 1
+            if min > 59:
+                min = 0
+                hrs = hrs + 1
+            sec = sec + 1
+            timeStr = "{:02d}:{:02d}:{:02d}".format(hrs, min, sec)
+            labelTime = Label(window, text=timeStr, background="#0b5394", font=("Helvetica, 20"), fg="#ffffff")
+            labelTime.pack()
+            labelTime.place(x=(3.9 * width / 6 + labelTime.winfo_width()),
+                            y=((2.7 * height) / 7 + labelTime.winfo_height()))
+            time.sleep(1)
 
 if __name__ == '__main__':
     main()
