@@ -5,6 +5,7 @@ import time
 import os
 import threading
 
+
 class Display(Frame):
 
     def __init__(self):
@@ -42,10 +43,10 @@ class Display(Frame):
         canvas.pack(fill = BOTH, expand = 1)
 
 
+
 def main():
 
     bgColor = "#4fa4ef"
-    pause = False
 
     window = Tk()
     window.wm_attributes('-fullscreen', 'true')
@@ -61,13 +62,31 @@ def main():
 
     # Top Buttons (images)
 
-    gif1 = PhotoImage(file='buttonL.gif')
+    pil_plane = PIL.Image.open("buttonL.gif")
+    width_og, height_og = pil_plane.size
+    factor = 1
+    widthi = int(width_og * factor)
+    heighti = int(height_og * factor)
+    pil_plane1 = pil_plane.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+    gif1 = PIL.ImageTk.PhotoImage(pil_plane1)
     canvas.create_image((width / 2) - 150, 0, image=gif1, anchor=NE)
 
-    gif2 = PhotoImage(file='buttonM.gif')
+    pil_run = PIL.Image.open("buttonM.gif")
+    width_og, height_og = pil_run.size
+    factor = 1
+    widthi = int(width_og * factor)
+    heighti = int(height_og * factor)
+    pil_run1 = pil_run.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+    gif2 = PIL.ImageTk.PhotoImage(pil_run1)
     canvas.create_image((width / 2), 0, image=gif2, anchor=N)
 
-    gif3 = PhotoImage(file='buttonR.gif')
+    pil_film = PIL.Image.open("buttonR.gif")
+    width_og, height_og = pil_film.size
+    factor = 1
+    widthi = int(width_og * factor)
+    heighti = int(height_og * factor)
+    pil_film1 = pil_film.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+    gif3 = PIL.ImageTk.PhotoImage(pil_film1)
     canvas.create_image((width / 2) + 150, 0, image=gif3, anchor=NW)
 
     # Bottom image
@@ -75,49 +94,71 @@ def main():
 #    gif4 = PhotoImage(file='bottom_rectangle.gif')
     pil_image4 = PIL.Image.open("bottom_rectangle.gif")
     width_og, height_og = pil_image4.size
-    factor = 1.5
+    factor = 1.75
     heighti = int(height_og * factor)
     pil_image42 = pil_image4.resize((width, heighti), PIL.Image.ANTIALIAS)
     tk_image = PIL.ImageTk.PhotoImage(pil_image42)
     canvas.create_image((width / 2), height, image=tk_image, anchor=S)
 
-    rect1 = PhotoImage(file='Rect1.gif')
+    pil_image1 = PIL.Image.open("Rect1.gif")
+    width_og, height_og = pil_image1.size
+    factor = 1
+    widthi = int(width_og * factor)
+    heighti = int(height_og * factor)
+    pil_image12 = pil_image1.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+    rect1 = PIL.ImageTk.PhotoImage(pil_image12)
     canvas.create_image((width / 3), (height / 3), image=rect1, anchor=N)
 
-    rect3 = PhotoImage(file='Rect3.gif')
+    pil_image3 = PIL.Image.open("Rect3.gif")
+    width_og, height_og = pil_image3.size
+    factor = 1
+    widthi = int(width_og * factor)
+    heighti = int(height_og * factor)
+    pil_image32 = pil_image3.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+    rect3 = PIL.ImageTk.PhotoImage(pil_image32)
     canvas.create_image(((2 * width) / 3), (height / 3), image=rect3, anchor=N)
 
-    rect2 = PhotoImage(file='Rect2.gif')
+    # Pause Button
+
+    pil_image2 = PIL.Image.open("Rect2.gif")
+    width_og, height_og = pil_image2.size
+    factor = 1
+    widthi = int(width_og * factor)
+    heighti = int(height_og * factor)
+    pil_image22 = pil_image2.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+    rect2 = PIL.ImageTk.PhotoImage(pil_image22)
     canvas.create_image((width / 2), (height / 2), image=rect2, anchor=N)
 
-    # Speed Button Labels
-
-    pauseButton = Button(height=0,bd=0,image= rect2,relief=FLAT,bg="#0b5394",activebackground="#0b5394",activeforeground="#0b5394",highlightcolor="#0b5394") #command=lambda:time_count(window, bgColor, width, height))
+    pauseButton = Button(width=widthi, height=heighti,bd=0,bg="#0b5394",relief=FLAT,image=rect2,activebackground="#0b5394",
+                         activeforeground="#0b5394",highlightcolor="#0b5394")#command=lambda:time_count(window, bgColor, width, height))
     pauseButton.pack()
     pauseButton.place(x=(width / 2.35), y=(height / 2))
 
-    labelL = Label(window, text="Low", background=bgColor, font=("Helvetica, 30"))
+    # Speed Button Labels
+
+    labelL = Label(window, text="Low", background='#073763', font=("Helvetica, 30"), fg="#ffffff")
     labelL.pack()
     labelL.place(x=width / 8 + labelL.winfo_width(), y=(6 * height) / 7 + labelL.winfo_height())
 
 
-    labelM = Label(window, text="Medium", background=bgColor, font=("Helvetica, 30"))
+    labelM = Label(window, text="Medium", background='#073763', font=("Helvetica, 30"), fg="#ffffff")
     labelM.pack()
     labelM.place(x=3 * width / 7 + labelM.winfo_width(), y=(6 * height) / 7 + labelM.winfo_height())
 
 
-    labelH = Label(window, text="High", background=bgColor, font=("Helvetica, 30"))
+    labelH = Label(window, text="High", background='#073763', font=("Helvetica, 30"), fg="#ffffff")
     labelH.pack()
     labelH.place(x=(4 * width / 5 + labelH.winfo_width()), y=((6 * height) / 7 + labelH.winfo_height()))
 
-
     t1 = threading.Thread(target=time_count, args=(window, width, height))
     t1.start()
-
     # dis = Display()
     window.mainloop()
 
-# def checkPauseTime(pause):
+
+
+
+#def checkPauseTime(pause):
 #     while (pause == True):
 #         time.sleep(1)
 
@@ -125,6 +166,7 @@ def time_count(window, width, height):
     sec = int(0)
     min = int(0)
     hrs = int(0)
+
     while(1):
         if sec > 59:
             sec = 0
@@ -136,8 +178,11 @@ def time_count(window, width, height):
         timeStr = "{:02d}:{:02d}:{:02d}".format(hrs, min, sec)
         labelTime = Label(window, text=timeStr, background="#0b5394", font=("Helvetica, 20"), fg="#ffffff")
         labelTime.pack()
-        labelTime.place(x=(3.9 * width / 6 + labelTime.winfo_width()), y=((2.7 * height) / 7 + labelTime.winfo_height()))
+        labelTime.place(x=(3.9 * width / 6 + labelTime.winfo_width()),
+                        y=((2.7 * height) / 7 + labelTime.winfo_height()))
         time.sleep(1)
 
 if __name__ == '__main__':
     main()
+
+
