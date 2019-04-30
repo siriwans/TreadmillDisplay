@@ -163,7 +163,7 @@ def main():
     # dis = Display()
     window.mainloop()
 
-pause = FALSE
+pause = True
 
 def setPause():
     global pause
