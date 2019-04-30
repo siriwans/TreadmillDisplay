@@ -132,14 +132,24 @@ def main():
     pauseButton = Button(width=widthi, height=heighti,bd=0, highlightthickness=0,bg="#0b5394",relief=FLAT,image=rect2,activebackground="#0b5394",
                          activeforeground="#0b5394",highlightcolor="#4fa4ef",command=setPause)
 
+
+    # Play button
+
+    pil_play = PIL.Image.open("play.gif")
+    width_og, height_og = pil_play.size
+    factor = 1
+    widthi = int(width_og * factor)
+    heighti = int(height_og * factor)
+    pil_play2 = pil_play.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+    play = PIL.ImageTk.PhotoImage(pil_play2)
     startButton = Button(width=widthi, height=heighti,bd=0, highlightthickness=0,bg="#0b5394",relief=FLAT,image=play,activebackground="#0b5394",
                          activeforeground="#0b5394",highlightcolor="#4fa4ef",command=setStart)
 
     pauseButton.pack()
-    pauseButton.place(x=(width / 2.35), y=(height / 2))
+    pauseButton.place(x=(width / 3), y=(height / 2))
 
     startButton.pack()
-    startButton.place(x=(width / 2), y=(height / 2))
+    startButton.place(x=(2 * width / 3), y=(height / 2), anchor=NE)
 
 
     # Speed Button Labels
