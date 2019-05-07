@@ -143,7 +143,7 @@ def main():
     pil_play2 = pil_play.resize((widthi, heighti), PIL.Image.ANTIALIAS)
     play = PIL.ImageTk.PhotoImage(pil_play2)
     startButton = Button(width=widthi, height=heighti,bd=0, highlightthickness=0,bg="#0b5394",relief=FLAT,image=play,activebackground="#0b5394",
-                         activeforeground="#0b5394",highlightcolor="#4fa4ef",command=setStart)
+                         activeforeground="#0b5394",highlightcolor="#4fa4ef", highlightbackground="#4fa4ef", command=setStart)
 
     pauseButton.pack()
     pauseButton.place(x=(width / 3), y=(height / 2))
