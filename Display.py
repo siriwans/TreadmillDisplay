@@ -10,8 +10,6 @@ class Display(Frame):
 
     def __init__(self):
 
-        super().__init__()
-
         self.initUI()
 
 
@@ -42,11 +40,7 @@ class Display(Frame):
 
         canvas.pack(fill = BOTH, expand = 1)
 
-
-
-def main():
-
-    bgColor = "#4fa4ef"
+def anotherWindow():
 
     window = Tk()
     window.wm_attributes('-fullscreen', 'true')
@@ -55,7 +49,7 @@ def main():
     height = window.winfo_screenheight()
     window.geometry('%dx%d' % (width, height))
 
-    #window['bg'] = bgColor
+    # window['bg'] = bgColor
 
     canvas = Canvas(window, background="#4fa4ef")
     canvas.pack(fill=BOTH, expand=1)
@@ -69,7 +63,7 @@ def main():
     heighti = int(height_og * factor)
     pil_plane1 = pil_plane.resize((widthi, heighti), PIL.Image.ANTIALIAS)
     gif1 = PIL.ImageTk.PhotoImage(pil_plane1)
-    #canvas.create_image((width / 2) - 150, 0, image=gif1, anchor=NE)
+    # canvas.create_image((width / 2) - 150, 0, image=gif1, anchor=NE)
     planeButton = Button(width=widthi, height=heighti, bd=0, highlightthickness=0, bg="#0b5394", relief=FLAT,
                          image=gif1, activebackground="#0b5394",
                          activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef")
@@ -84,10 +78,10 @@ def main():
     heighti = int(height_og * factor)
     pil_run1 = pil_run.resize((widthi, heighti), PIL.Image.ANTIALIAS)
     gif2 = PIL.ImageTk.PhotoImage(pil_run1)
-    #canvas.create_image((width / 2), 0, image=gif2, anchor=N)
+    # canvas.create_image((width / 2), 0, image=gif2, anchor=N)
     runButton = Button(width=widthi, height=heighti, bd=0, highlightthickness=0, bg="#0b5394", relief=FLAT,
-                         image=gif2, activebackground="#0b5394",
-                         activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef")
+                       image=gif2, activebackground="#0b5394",
+                       activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef")
 
     runButton.pack()
     runButton.place(x=(width / 2), y=0, anchor=N)
@@ -99,17 +93,81 @@ def main():
     heighti = int(height_og * factor)
     pil_film1 = pil_film.resize((widthi, heighti), PIL.Image.ANTIALIAS)
     gif3 = PIL.ImageTk.PhotoImage(pil_film1)
-    #canvas.create_image((width / 2) + 150, 0, image=gif3, anchor=NW)
+    # canvas.create_image((width / 2) + 150, 0, image=gif3, anchor=NW)
     filmButton = Button(width=widthi, height=heighti, bd=0, highlightthickness=0, bg="#0b5394", relief=FLAT,
-                         image=gif3, activebackground="#0b5394",
-                         activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef")
+                        image=gif3, activebackground="#0b5394",
+                        activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef")
+
+    filmButton.pack()
+    filmButton.place(x=(width / 2) + 150, y=0, anchor=NW)
+    window.mainloop()
+    return
+
+def main():
+    bgColor = "#4fa4ef"
+
+    window = Tk()
+    window.wm_attributes('-fullscreen', 'true')
+
+    width = window.winfo_screenwidth()
+    height = window.winfo_screenheight()
+    window.geometry('%dx%d' % (width, height))
+
+    # window['bg'] = bgColor
+
+    canvas = Canvas(window, background="#4fa4ef")
+    canvas.pack(fill=BOTH, expand=1)
+
+    # Top Buttons (images)
+
+    pil_plane = PIL.Image.open("buttonL.gif")
+    width_og, height_og = pil_plane.size
+    factor = 1
+    widthi = int(width_og * factor)
+    heighti = int(height_og * factor)
+    pil_plane1 = pil_plane.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+    gif1 = PIL.ImageTk.PhotoImage(pil_plane1)
+    # canvas.create_image((width / 2) - 150, 0, image=gif1, anchor=NE)
+    planeButton = Button(width=widthi, height=heighti, bd=0, highlightthickness=0, bg="#0b5394", relief=FLAT,
+                         image=gif1, activebackground="#0b5394",
+                         activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef", command=anotherWindow)
+
+    planeButton.pack()
+    planeButton.place(x=(width / 2) - 150, y=0, anchor=NE)
+
+    pil_run = PIL.Image.open("buttonM.gif")
+    width_og, height_og = pil_run.size
+    factor = 1
+    widthi = int(width_og * factor)
+    heighti = int(height_og * factor)
+    pil_run1 = pil_run.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+    gif2 = PIL.ImageTk.PhotoImage(pil_run1)
+    # canvas.create_image((width / 2), 0, image=gif2, anchor=N)
+    runButton = Button(width=widthi, height=heighti, bd=0, highlightthickness=0, bg="#0b5394", relief=FLAT,
+                       image=gif2, activebackground="#0b5394",
+                       activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef")
+
+    runButton.pack()
+    runButton.place(x=(width / 2), y=0, anchor=N)
+
+    pil_film = PIL.Image.open("buttonR.gif")
+    width_og, height_og = pil_film.size
+    factor = 1
+    widthi = int(width_og * factor)
+    heighti = int(height_og * factor)
+    pil_film1 = pil_film.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+    gif3 = PIL.ImageTk.PhotoImage(pil_film1)
+    # canvas.create_image((width / 2) + 150, 0, image=gif3, anchor=NW)
+    filmButton = Button(width=widthi, height=heighti, bd=0, highlightthickness=0, bg="#0b5394", relief=FLAT,
+                        image=gif3, activebackground="#0b5394",
+                        activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef")
 
     filmButton.pack()
     filmButton.place(x=(width / 2) + 150, y=0, anchor=NW)
 
     # Bottom image
 
-#    gif4 = PhotoImage(file='bottom_rectangle.gif')
+    #    gif4 = PhotoImage(file='bottom_rectangle.gif')
     pil_image4 = PIL.Image.open("bottom_rectangle.gif")
     width_og, height_og = pil_image4.size
     factor = 1.75
@@ -145,11 +203,12 @@ def main():
     heighti = int(height_og * factor)
     pil_image22 = pil_image2.resize((widthi, heighti), PIL.Image.ANTIALIAS)
     rect2 = PIL.ImageTk.PhotoImage(pil_image22)
-    #canvas.create_image((width / 2), (height / 2), image=rect2, anchor=N)
+    # canvas.create_image((width / 2), (height / 2), image=rect2, anchor=N)
 
-    pauseButton = Button(width=widthi, height=heighti,bd=0, highlightthickness=0,bg="#0b5394",relief=FLAT,image=rect2,activebackground="#0b5394",
-                         activeforeground="#0b5394",highlightcolor="#4fa4ef",highlightbackground="#4fa4ef",command=setPause)
-
+    pauseButton = Button(width=widthi, height=heighti, bd=0, highlightthickness=0, bg="#0b5394", relief=FLAT,
+                         image=rect2, activebackground="#0b5394",
+                         activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef",
+                         command=setPause)
 
     # Play button
 
@@ -160,8 +219,10 @@ def main():
     heighti = int(height_og * factor)
     pil_play2 = pil_play.resize((widthi, heighti), PIL.Image.ANTIALIAS)
     play = PIL.ImageTk.PhotoImage(pil_play2)
-    startButton = Button(width=widthi, height=heighti,bd=0, highlightthickness=0,bg="#0b5394",relief=FLAT,image=play,activebackground="#0b5394",
-                         activeforeground="#0b5394",highlightcolor="#4fa4ef", highlightbackground="#4fa4ef", command=setStart)
+    startButton = Button(width=widthi, height=heighti, bd=0, highlightthickness=0, bg="#0b5394", relief=FLAT,
+                         image=play, activebackground="#0b5394",
+                         activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef",
+                         command=setStart)
 
     pauseButton.pack()
     pauseButton.place(x=(2 * width / 3), y=(height / 2), anchor=NE)
@@ -169,18 +230,15 @@ def main():
     startButton.pack()
     startButton.place(x=(width / 3), y=(height / 2))
 
-
     # Speed Button Labels
 
     labelL = Label(window, text="Low", background='#073763', font=("Helvetica, 30"), fg="#ffffff")
     labelL.pack()
     labelL.place(x=width / 8 + labelL.winfo_width(), y=(6 * height) / 7 + labelL.winfo_height())
 
-
     labelM = Label(window, text="Medium", background='#073763', font=("Helvetica, 30"), fg="#ffffff")
     labelM.pack()
     labelM.place(x=3 * width / 7 + labelM.winfo_width(), y=(6 * height) / 7 + labelM.winfo_height())
-
 
     labelH = Label(window, text="High", background='#073763', font=("Helvetica, 30"), fg="#ffffff")
     labelH.pack()
@@ -190,6 +248,7 @@ def main():
     t1.start()
     # dis = Display()
     window.mainloop()
+
 
 pause = True
 
