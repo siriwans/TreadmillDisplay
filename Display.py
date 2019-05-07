@@ -130,7 +130,7 @@ def main():
     #canvas.create_image((width / 2), (height / 2), image=rect2, anchor=N)
 
     pauseButton = Button(width=widthi, height=heighti,bd=0, highlightthickness=0,bg="#0b5394",relief=FLAT,image=rect2,activebackground="#0b5394",
-                         activeforeground="#0b5394",highlightcolor="#4fa4ef",command=setPause)
+                         activeforeground="#0b5394",highlightcolor="#4fa4ef",highlightbackground="#4fa4ef",command=setPause)
 
 
     # Play button
