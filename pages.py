@@ -19,9 +19,8 @@ class Flight(Page):
         label.pack(side="top", fill="both", expand=True)
 
 
-
 class MainPage(Frame):
-    def __init__(self, width, height, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         Frame.__init__(self, width, height, *args, **kwargs)
         flight = Flight(self, width, height)
 
@@ -82,9 +81,9 @@ if __name__ == "__main__":
     window = Tk()
     main = MainPage(window)
     main.pack(side="top", fill="both", expand=True)
-    window.wm_attributes('-fullscreen', 'true')
-
     width = window.winfo_screenwidth()
     height = window.winfo_screenheight()
-    window.geometry('%dx%d' % (width, height))
+    main.width = width
+    main.height = height
+    window.wm_attributes('-fullscreen', 'true')
     window.mainloop()
