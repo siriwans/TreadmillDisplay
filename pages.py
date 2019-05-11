@@ -3,30 +3,29 @@ import PIL.Image
 import PIL.ImageTk
 
 class Page(Frame):
-    def __init__(self, width, height):
-        Frame.__init__(self, width, height)
+    def __init__(self, width, height, *args, **kwargs):
+        Frame.__init__(self, width, height, *args, *kwargs)
     def show(self):
         self.lift()
 
 class Flight(Page):
-    def __init__(self, width, height):
+    def __init__(self, width, height, *args, **kwargs):
+        Page.__init__(self, width, height, *args, **kwargs)
         self.width = width
         self.height = height
-        Page.__init__(self, width, height)
         frame = Frame(self, width=width, height=height, bg="#4fa4ef")
         frame.pack()
         label = Label(self, text="Coming soon")
         label.pack(side="top", fill="both", expand=True)
 
 
-
 class MainPage(Frame):
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-        Frame.__init__(self, width, height)
+    def __init__(self, *args, **kwargs):
+        Frame.__init__(self, width, height, *args, **kwargs)
         flight = Flight(self, width, height)
 
+        self.width = width
+        self.height = height
         frame = Frame(self, width=width, height=height, bg="#4fa4ef")
         frame.pack()
 
@@ -80,11 +79,11 @@ class MainPage(Frame):
 
 if __name__ == "__main__":
     window = Tk()
-    window.wm_attributes('-fullscreen', 'true')
-
-    width = window.winfo_screenwidth()
-    height = window.winfo_screenheight()
-    window.geometry('%dx%d' % (width, height))
     main = MainPage(window)
     main.pack(side="top", fill="both", expand=True)
+    width = window.winfo_screenwidth()
+    height = window.winfo_screenheight()
+    main.width = width
+    main.height = height
+    window.wm_attributes('-fullscreen', 'true')
     window.mainloop()
