@@ -24,6 +24,8 @@ class Entertainment(Page):
 
 class Window(Page):
    def __init__(self, flight, ent, *args, **kwargs):
+       width = 800
+       height = 480
        Page.__init__(self, *args, **kwargs)
        label = tk.Label(self, text="MAIN INIT WINDOW")
        label.pack(side="top", fill="both", expand=True)
@@ -36,7 +38,7 @@ class Window(Page):
 
        pil_plane = PIL.Image.open("buttonL.gif")
        width_og, height_og = pil_plane.size
-       factor = 1
+       factor = .5
        widthi = int(width_og * factor)
        heighti = int(height_og * factor)
        pil_plane1 = pil_plane.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -48,11 +50,11 @@ class Window(Page):
                             command=flight.lift)
 
        planeButton.pack()
-       planeButton.place(x=(widthi / 2) - 150, y=0, anchor=tk.NE)
+       planeButton.place(x=(width / 2) - 75, y=0, anchor=tk.NE)
 
        pil_run = PIL.Image.open("buttonM.gif")
        width_og, height_og = pil_run.size
-       factor = 1
+       factor = .5
        widthi = int(width_og * factor)
        heighti = int(height_og * factor)
        pil_run1 = pil_run.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -64,11 +66,11 @@ class Window(Page):
                           command=window.lift)
 
        runButton.pack()
-       runButton.place(x=(widthi / 2), y=0, anchor=tk.N)
+       runButton.place(x=(width / 2), y=0, anchor=tk.N)
 
        pil_film = PIL.Image.open("buttonR.gif")
        width_og, height_og = pil_film.size
-       factor = 1
+       factor = .5
        widthi = int(width_og * factor)
        heighti = int(height_og * factor)
        pil_film1 = pil_film.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -80,41 +82,41 @@ class Window(Page):
                            command=ent.lift)
 
        filmButton.pack()
-       filmButton.place(x=(widthi / 2) + 150, y=0, anchor=tk.NW)
+       filmButton.place(x=(width / 2) + 75, y=0, anchor=tk.NW)
 
        # Bottom image
 
        pil_image4 = PIL.Image.open("bottom_rectangle.gif")
        width_og, height_og = pil_image4.size
-       factor = 1.75
+       factor = 1
        heighti = int(height_og * factor)
-       pil_image42 = pil_image4.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+       pil_image42 = pil_image4.resize((width, heighti), PIL.Image.ANTIALIAS)
        tk_image = PIL.ImageTk.PhotoImage(pil_image42)
-       canvas.create_image((widthi / 2), heighti, image=tk_image, anchor=tk.S)
+       canvas.create_image((width / 2), height, image=tk_image, anchor=tk.S)
 
        pil_image1 = PIL.Image.open("Rect1.gif")
        width_og, height_og = pil_image1.size
-       factor = 1
+       factor = .6
        widthi = int(width_og * factor)
        heighti = int(height_og * factor)
        pil_image12 = pil_image1.resize((widthi, heighti), PIL.Image.ANTIALIAS)
        rect1 = PIL.ImageTk.PhotoImage(pil_image12)
-       canvas.create_image((widthi / 3), (heighti / 3), image=rect1, anchor=tk.N)
+       canvas.create_image((width / 3), (height / 3), image=rect1, anchor=tk.N)
 
        pil_image3 = PIL.Image.open("Rect3.gif")
        width_og, height_og = pil_image3.size
-       factor = 1
+       factor = .6
        widthi = int(width_og * factor)
        heighti = int(height_og * factor)
        pil_image32 = pil_image3.resize((widthi, heighti), PIL.Image.ANTIALIAS)
        rect3 = PIL.ImageTk.PhotoImage(pil_image32)
-       canvas.create_image(((2 * widthi) / 3), (heighti / 3), image=rect3, anchor=tk.N)
+       canvas.create_image(((2 * width) / 3), (height / 3), image=rect3, anchor=tk.N)
 
        # Pause Button
 
        pil_image2 = PIL.Image.open("Rect2.gif")
        width_og, height_og = pil_image2.size
-       factor = 1
+       factor = .6
        widthi = int(width_og * factor)
        heighti = int(height_og * factor)
        pil_image22 = pil_image2.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -130,7 +132,7 @@ class Window(Page):
 
        pil_play = PIL.Image.open("play.gif")
        width_og, height_og = pil_play.size
-       factor = 1
+       factor = .6
        widthi = int(width_og * factor)
        heighti = int(height_og * factor)
        pil_play2 = pil_play.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -141,26 +143,26 @@ class Window(Page):
                             command=setStart)
 
        pauseButton.pack()
-       pauseButton.place(x=(2 * widthi / 3), y=(heighti / 2), anchor=tk.NE)
+       pauseButton.place(x=(2 * width / 3), y=(height / 2), anchor=tk.NE)
 
        startButton.pack()
-       startButton.place(x=(widthi / 3), y=(heighti / 2))
+       startButton.place(x=(width / 3), y=(height / 2))
 
        # Speed Button Labels
 
        labelL = tk.Label(window, text="Low", background='#073763', font=("Helvetica, 30"), fg="#ffffff")
        labelL.pack()
-       labelL.place(x=widthi / 8 + labelL.winfo_width(), y=(6 * heighti) / 7 + labelL.winfo_height())
+       labelL.place(x=width / 8 + labelL.winfo_width(), y=(6 * height) / 7 + labelL.winfo_height())
 
        labelM = tk.Label(window, text="Medium", background='#073763', font=("Helvetica, 30"), fg="#ffffff")
        labelM.pack()
-       labelM.place(x=3 * widthi / 7 + labelM.winfo_width(), y=(6 * heighti) / 7 + labelM.winfo_height())
+       labelM.place(x=3 * width / 7 + labelM.winfo_width(), y=(6 * height) / 7 + labelM.winfo_height())
 
        labelH = tk.Label(window, text="High", background='#073763', font=("Helvetica, 30"), fg="#ffffff")
        labelH.pack()
-       labelH.place(x=(4 * widthi / 5 + labelH.winfo_width()), y=((6 * heighti) / 7 + labelH.winfo_height()))
+       labelH.place(x=(4 * width / 5 + labelH.winfo_width()), y=((6 * height) / 7 + labelH.winfo_height()))
 
-       t1 = threading.Thread(target=time_count, args=(window, widthi, heighti))
+       t1 = threading.Thread(target=time_count, args=(window, width, height))
        t1.start()
        # dis = Display()
        window.mainloop()
@@ -232,11 +234,12 @@ def time_count(window, width, height):
 
 if __name__ == "__main__":
     window = tk.Tk()
+#    width = window.winfo_screenwidth()
+#    height = window.winfo_screenheight()
+#    window.wm_attributes('-fullscreen', 'true')
+
+#    main.wm_attributes('-fullscreen', 'true')
+    window.wm_geometry("800x480")
     main = MainView(window)
     main.pack(side="top", fill="both", expand=True)
-    width = window.winfo_screenwidth()
-    height = window.winfo_screenheight()
-    window.wm_attributes('-fullscreen', 'true')
-    main.wm_attributes('-fullscreen', 'true')
-    window.geometry('%dx%d' % (width, height))
     window.mainloop()
