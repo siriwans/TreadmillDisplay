@@ -3,17 +3,19 @@ import PIL.Image
 import PIL.ImageTk
 
 class Page(Frame):
-    def __init__(self, width, height, *args, **kwargs):
-        Frame.__init__(self, width, height, *args, *kwargs)
+    def __init__(self, *args, **kwargs):
+        self.width = 0
+        self.height = 0
+        Frame.__init__(self, *args, **kwargs)
     def show(self):
         self.lift()
 
 class Flight(Page):
-    def __init__(self, width, height, *args, **kwargs):
-        Page.__init__(self, width, height, *args, **kwargs)
-        self.width = width
-        self.height = height
-        frame = Frame(self, width=width, height=height, bg="#4fa4ef")
+    def __init__(self, *args, **kwargs):
+        self.width = 0
+        self.height = 0
+        Page.__init__(self, *args, **kwargs)
+        frame = Frame(self, width=self.width, height=self.height, bg="#4fa4ef")
         frame.pack()
         label = Label(self, text="Coming soon")
         label.pack(side="top", fill="both", expand=True)
@@ -21,13 +23,16 @@ class Flight(Page):
 
 class MainPage(Frame):
     def __init__(self, *args, **kwargs):
-        Frame.__init__(self, width, height, *args, **kwargs)
-        flight = Flight(self, width, height)
+        self.width = 0
+        self.height = 0
+        Frame.__init__(self, *args, **kwargs)
+        flight = Flight(self)
+        flight.width = self.width
+        flight.height = self.height
 
-        self.width = width
-        self.height = height
-        frame = Frame(self, width=width, height=height, bg="#4fa4ef")
+        frame = Frame(self, width=self.width, height=self.height, bg="#4fa4ef")
         frame.pack()
+        flight.place(in_=frame, x=0, y=0, relwidth=1, relheight=1)
 
         # Top Buttons (images)
 
@@ -44,7 +49,7 @@ class MainPage(Frame):
                              activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef")
 
         planeButton.pack()
-        planeButton.place(x=(width / 2) - 150, y=0, anchor=NE)
+        planeButton.place(x=(self.width / 2) - 150, y=0, anchor=NE)
 
         pil_run = PIL.Image.open("buttonM.gif")
         width_og, height_og = pil_run.size
@@ -59,7 +64,7 @@ class MainPage(Frame):
                            activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef")
 
         runButton.pack()
-        runButton.place(x=(width / 2), y=0, anchor=N)
+        runButton.place(x=(self.width / 2), y=0, anchor=N)
 
         pil_film = PIL.Image.open("buttonR.gif")
         width_og, height_og = pil_film.size
@@ -74,13 +79,12 @@ class MainPage(Frame):
                             activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef")
 
         filmButton.pack()
-        filmButton.place(x=(width / 2) + 150, y=0, anchor=NW)
+        filmButton.place(x=(self.width / 2) + 150, y=0, anchor=NW)
 
 
 if __name__ == "__main__":
     window = Tk()
     main = MainPage(window)
-    main.pack(side="top", fill="both", expand=True)
     width = window.winfo_screenwidth()
     height = window.winfo_screenheight()
     main.width = width
