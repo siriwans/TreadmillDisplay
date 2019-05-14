@@ -96,21 +96,21 @@ class Window(Page):
 
        pil_image1 = PIL.Image.open("Rect1.gif")
        width_og, height_og = pil_image1.size
-       factor = .6
+       factor = .2
        widthi = int(width_og * factor)
        heighti = int(height_og * factor)
        pil_image12 = pil_image1.resize((widthi, heighti), PIL.Image.ANTIALIAS)
        rect1 = PIL.ImageTk.PhotoImage(pil_image12)
-       canvas.create_image((width / 3), (height / 3), image=rect1, anchor=tk.N)
+       canvas.create_image((width / 3), (height / 4), image=rect1, anchor=tk.N)
 
        pil_image3 = PIL.Image.open("Rect3.gif")
        width_og, height_og = pil_image3.size
-       factor = .6
+       factor = .2
        widthi = int(width_og * factor)
        heighti = int(height_og * factor)
        pil_image32 = pil_image3.resize((widthi, heighti), PIL.Image.ANTIALIAS)
        rect3 = PIL.ImageTk.PhotoImage(pil_image32)
-       canvas.create_image(((2 * width) / 3), (height / 3), image=rect3, anchor=tk.N)
+       canvas.create_image(((2 * width) / 3), (height / 4), image=rect3, anchor=tk.N)
 
        # Pause Button
 
@@ -165,7 +165,7 @@ class Window(Page):
        t1 = threading.Thread(target=time_count, args=(window, width, height))
        t1.start()
        # dis = Display()
-       window.mainloop()
+       #window.mainloop()
 
 
 class MainView(tk.Frame):

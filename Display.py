@@ -178,7 +178,7 @@ def main():
 
     pil_image1 = PIL.Image.open("Rect1.gif")
     width_og, height_og = pil_image1.size
-    factor = 1
+    factor = .25
     widthi = int(width_og * factor)
     heighti = int(height_og * factor)
     pil_image12 = pil_image1.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -187,7 +187,7 @@ def main():
 
     pil_image3 = PIL.Image.open("Rect3.gif")
     width_og, height_og = pil_image3.size
-    factor = 1
+    factor = .25
     widthi = int(width_og * factor)
     heighti = int(height_og * factor)
     pil_image32 = pil_image3.resize((widthi, heighti), PIL.Image.ANTIALIAS)
