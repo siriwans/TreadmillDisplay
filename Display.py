@@ -318,7 +318,7 @@ def flight(width, height):
     button.pack()
     button.place(x=(width / 2), y=(height / 2)+ 75)
 
-def speedbuttons():
+#def speedbuttons():
 
 
 if __name__ == '__main__':

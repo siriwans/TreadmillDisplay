@@ -171,6 +171,8 @@ class Window(Page):
 class MainView(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
+        width=800
+        height=480
         flight = Flight(self)
         ent = Entertainment(self)
         window = Window(flight, ent, self)
@@ -183,13 +185,63 @@ class MainView(tk.Frame):
         flight.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         ent.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
-        b1 = tk.Button(buttonframe, text="FLIGHT", command=flight.lift)
+        # Top Buttons (images)
+
+        pil_plane = PIL.Image.open("buttonL.gif")
+        width_og, height_og = pil_plane.size
+        factor = .5
+        widthi = int(width_og * factor)
+        heighti = int(height_og * factor)
+        pil_plane1 = pil_plane.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+        gif1 = PIL.ImageTk.PhotoImage(pil_plane1)
+        # canvas.create_image((width / 2) - 150, 0, image=gif1, anchor=NE)
+        planeButton = tk.Button(buttonframe, width=widthi, height=heighti, bd=0, highlightthickness=0, bg="#0b5394", relief=tk.FLAT,
+                                image=gif1, activebackground="#0b5394",
+                                activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef",
+                                command=flight.lift)
+
+        planeButton.pack()
+        planeButton.place(x=(width / 2) - 75, y=0, anchor=tk.NE)
+
+        pil_run = PIL.Image.open("buttonM.gif")
+        width_og, height_og = pil_run.size
+        factor = .5
+        widthi = int(width_og * factor)
+        heighti = int(height_og * factor)
+        pil_run1 = pil_run.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+        gif2 = PIL.ImageTk.PhotoImage(pil_run1)
+        # canvas.create_image((width / 2), 0, image=gif2, anchor=N)
+        runButton = tk.Button(buttonframe, width=widthi, height=heighti, bd=0, highlightthickness=0, bg="#0b5394", relief=tk.FLAT,
+                              image=gif2, activebackground="#0b5394",
+                              activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef",
+                              command=window.lift)
+
+        runButton.pack()
+        runButton.place(x=(width / 2), y=0, anchor=tk.N)
+
+        pil_film = PIL.Image.open("buttonR.gif")
+        width_og, height_og = pil_film.size
+        factor = .5
+        widthi = int(width_og * factor)
+        heighti = int(height_og * factor)
+        pil_film1 = pil_film.resize((widthi, heighti), PIL.Image.ANTIALIAS)
+        gif3 = PIL.ImageTk.PhotoImage(pil_film1)
+        # canvas.create_image((width / 2) + 150, 0, image=gif3, anchor=NW)
+        filmButton = tk.Button(buttonframe, width=widthi, height=heighti, bd=0, highlightthickness=0, bg="#0b5394", relief=tk.FLAT,
+                               image=gif3, activebackground="#0b5394",
+                               activeforeground="#0b5394", highlightcolor="#4fa4ef", highlightbackground="#4fa4ef",
+                               command=ent.lift)
+
+        filmButton.pack()
+        filmButton.place(x=(width / 2) + 75, y=0, anchor=tk.NW)
+
+        '''b1 = tk.Button(buttonframe, text="FLIGHT", command=flight.lift)
         b2 = tk.Button(buttonframe, text="ENTERTAINMENT", command=ent.lift)
         b3 = tk.Button(buttonframe, text="MAIN", command=window.lift)
 
         b1.pack()
         b2.pack()
-        b3.pack()
+        b3.pack()'''
 
         window.show()
 
