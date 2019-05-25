@@ -110,8 +110,8 @@ def main():
     window = Tk()
     window.wm_attributes('-fullscreen', 'true')
 
-    width = window.winfo_screenwidth()
-    height = window.winfo_screenheight()
+    width = 800 #window.winfo_screenwidth()
+    height = 480 #window.winfo_screenheight()
     window.geometry('%dx%d' % (width, height))
 
     # window['bg'] = bgColor
@@ -123,7 +123,7 @@ def main():
 
     pil_plane = PIL.Image.open("buttonL.gif")
     width_og, height_og = pil_plane.size
-    factor = 1
+    factor = .75
     widthi = int(width_og * factor)
     heighti = int(height_og * factor)
     pil_plane1 = pil_plane.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -135,11 +135,11 @@ def main():
                          command=lambda:flight(width, height))
 
     planeButton.pack()
-    planeButton.place(x=(width / 2) - 150, y=0, anchor=NE)
+    planeButton.place(x=(width / 2) - 100, y=0, anchor=NE)
 
     pil_run = PIL.Image.open("buttonM.gif")
     width_og, height_og = pil_run.size
-    factor = 1
+    factor = .75
     widthi = int(width_og * factor)
     heighti = int(height_og * factor)
     pil_run1 = pil_run.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -154,7 +154,7 @@ def main():
 
     pil_film = PIL.Image.open("buttonR.gif")
     width_og, height_og = pil_film.size
-    factor = 1
+    factor = .75
     widthi = int(width_og * factor)
     heighti = int(height_og * factor)
     pil_film1 = pil_film.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -166,14 +166,14 @@ def main():
                         command=lambda:entertainment(width, height))
 
     filmButton.pack()
-    filmButton.place(x=(width / 2) + 150, y=0, anchor=NW)
+    filmButton.place(x=(width / 2) + 100, y=0, anchor=NW)
 
     # Bottom image
 
     #    gif4 = PhotoImage(file='bottom_rectangle.gif')
     pil_image4 = PIL.Image.open("bottom_rectangle.gif")
     width_og, height_og = pil_image4.size
-    factor = 1.75
+    factor = .85
     heighti = int(height_og * factor)
     pil_image42 = pil_image4.resize((width, heighti), PIL.Image.ANTIALIAS)
     tk_image = PIL.ImageTk.PhotoImage(pil_image42)
@@ -181,7 +181,7 @@ def main():
 
     pil_image1 = PIL.Image.open("Rect1.gif")
     width_og, height_og = pil_image1.size
-    factor = .35
+    factor = .25
     widthi = int(width_og * factor)
     heighti = int(height_og * factor)
     pil_image12 = pil_image1.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -190,7 +190,7 @@ def main():
 
     pil_image3 = PIL.Image.open("Rect3.gif")
     width_og, height_og = pil_image3.size
-    factor = .35
+    factor = .25
     widthi = int(width_og * factor)
     heighti = int(height_og * factor)
     pil_image32 = pil_image3.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -201,7 +201,7 @@ def main():
 
     pil_image2 = PIL.Image.open("Rect2.gif")
     width_og, height_og = pil_image2.size
-    factor = 1
+    factor = .75
     widthi = int(width_og * factor)
     heighti = int(height_og * factor)
     pil_image22 = pil_image2.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -217,7 +217,7 @@ def main():
 
     pil_play = PIL.Image.open("play.gif")
     width_og, height_og = pil_play.size
-    factor = 1
+    factor = .75
     widthi = int(width_og * factor)
     heighti = int(height_og * factor)
     pil_play2 = pil_play.resize((widthi, heighti), PIL.Image.ANTIALIAS)
@@ -228,24 +228,24 @@ def main():
                          command=setStart)
 
     pauseButton.pack()
-    pauseButton.place(x=(2 * width / 3), y=(4.5 * height / 8), anchor=NE)
+    pauseButton.place(x=(5 * width / 8), y=(5 * height / 8), anchor=N)
 
     startButton.pack()
-    startButton.place(x=(width / 3), y=(4.5 * height / 8), anchor=NW)
+    startButton.place(x=(3 * width / 8), y=(5 * height / 8), anchor=N)
 
     # Speed Button Labels
 
-    labelL = Label(window, text="Low", background='#073763', font=("Helvetica, 40"), fg="#ffffff")
+    labelL = Label(window, text="Low", background='#073763', font=("Helvetica, 25"), fg="#ffffff")
     labelL.pack()
-    labelL.place(x=width / 8 + labelL.winfo_width(), y=(7 * height) / 8 + labelL.winfo_height())
+    labelL.place(x=width / 8 + labelL.winfo_width(), y=(6.75 * height) / 8 + labelL.winfo_height())
 
-    labelM = Label(window, text="Medium", background='#073763', font=("Helvetica, 40"), fg="#ffffff")
+    labelM = Label(window, text="Medium", background='#073763', font=("Helvetica, 25"), fg="#ffffff")
     labelM.pack()
-    labelM.place(x=3 * width / 7 + labelM.winfo_width(), y=(7 * height) / 8 + labelM.winfo_height())
+    labelM.place(x=3 * width / 7 + labelM.winfo_width(), y=(6.75 * height) / 8 + labelM.winfo_height())
 
-    labelH = Label(window, text="High", background='#073763', font=("Helvetica, 40"), fg="#ffffff")
+    labelH = Label(window, text="High", background='#073763', font=("Helvetica, 25"), fg="#ffffff")
     labelH.pack()
-    labelH.place(x=(4 * width / 5 + labelH.winfo_width()), y=((7 * height) / 8 + labelH.winfo_height()))
+    labelH.place(x=(4 * width / 5 + labelH.winfo_width()), y=((6.75 * height) / 8 + labelH.winfo_height()))
 
     t1 = threading.Thread(target=time_count, args=(window, width, height))
     t1.start()
@@ -271,7 +271,7 @@ def time_count(window, width, height):
     sec = int(0)
     min = int(0)
     hrs = int(0)
-    global pause;
+    global pause
 
     while(1):
         if (pause):
@@ -288,35 +288,35 @@ def time_count(window, width, height):
             timeStr = "{:02d}:{:02d}:{:02d}".format(hrs, min, sec)
             labelTime = Label(window, text=timeStr, background="#0b5394", font=("Helvetica, 20"), fg="#ffffff")
             labelTime.pack()
-            labelTime.place(x=(3.9 * width / 6 + labelTime.winfo_width()),
-                            y=((2.7 * height) / 7 + labelTime.winfo_height()))
+            labelTime.place(x=(4.95 * width / 7 + labelTime.winfo_width()),
+                            y=((3.15 * height) / 7 + labelTime.winfo_height()), anchor=CENTER)
             time.sleep(1)
 
 def entertainment(width, height):
     top = Toplevel(bg="#4fa4ef", width=width, height=height)
     top.wm_attributes('-fullscreen', 'true')
-    msg = Message(top, text="Entertainment page coming soon...", bg="#4fa4ef", font=("Helvetica, 30"),
+    msg = Message(top, text="Entertainment page coming soon...", bg="#4fa4ef", font=("Helvetica, 20"),
                   width=800, justify="center",anchor="center")
     msg.pack()
-    msg.place(x=(width / 2.5) + msg.winfo_width(), y=(height / 2) + msg.winfo_height())
+    msg.place(x=(width / 2), y=(height / 2), anchor=CENTER)
 
-    button = Button(top, text="Dismiss", command=top.destroy, font=("Helvetica, 30"),
+    button = Button(top, text="Dismiss", command=top.destroy, font=("Helvetica, 20"),
                     anchor=CENTER)
     button.pack()
-    button.place(x=(width / 2), y=(height / 2)+ 75)
+    button.place(x=(width / 2), y=(height / 2) + 75, anchor=CENTER)
 
 def flight(width, height):
     top = Toplevel(bg="#4fa4ef", width=width, height=height)
     top.wm_attributes('-fullscreen', 'true')
-    msg = Message(top, text="Flight Info page coming soon...", bg="#4fa4ef", font=("Helvetica, 30"),
+    msg = Message(top, text="Flight Info page coming soon...", bg="#4fa4ef", font=("Helvetica, 20"),
                   width=800, justify="center", anchor=CENTER)
     msg.pack()
-    msg.place(x=(width / 2.5) + msg.winfo_width(), y=(height / 2) + msg.winfo_height())
+    msg.place(x=(width / 2), y=(height / 2), anchor=CENTER)
 
-    button = Button(top, text="Dismiss", command=top.destroy, font=("Helvetica, 30"),
+    button = Button(top, text="Dismiss", command=top.destroy, font=("Helvetica, 20"),
                     anchor=CENTER)
     button.pack()
-    button.place(x=(width / 2), y=(height / 2)+ 75)
+    button.place(x=(width / 2), y=(height / 2)+ 75, anchor=CENTER)
 
 #def speedbuttons():
 
